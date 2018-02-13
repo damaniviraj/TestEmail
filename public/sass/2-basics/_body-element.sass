@@ -1,0 +1,29 @@
+
+\:root
+  font-size: $rootSize
+  +mqh(max,600px)
+    font-size: 14px
+a
+  color: bgc($link-color,.5)
+  text-decoration: none
+  outline: none
+  +transition(all 0.5s ease)
+
+body
+  line-height: 1
+  font: rem($body-size) $pf
+  position: relative
+  background: $body-bg
+  +mq(min,1024px)
+    overflow: hidden
+  &.product-listing-page
+    background-color: #f5f5f5
+  &.product-details-page
+    background-color: #f5f5f5
+
+*
+  +sizing(border-box)
+  +break-word(keep-all)
+  &:after,
+  &:before
+    @extend *

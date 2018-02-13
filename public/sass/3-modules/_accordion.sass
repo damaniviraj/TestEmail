@@ -1,0 +1,27 @@
+.accordion
+  +prefix('box-shadow',$bxShadow)
+  margin-bottom: em(30)
+  &.active
+    .accordion-title
+      &:after
+        +transform(translateY(-50%) rotate(180deg))
+  .accordion-title
+    padding: em(10) em(15)
+    background-color: #ddd
+    color: #000
+    font-size: em(18)
+    font-weight: 600
+    cursor: pointer
+    position: relative
+    &:after
+      +fa('\f13a')
+      position: absolute
+      right: em(15)
+      top: 50%
+      +transform(translateY(-50%))
+      color: lighten(#000,30)
+      +transition
+  .accordion-content
+    padding: em(10) em(15)
+    background-color: #fff
+    display: none

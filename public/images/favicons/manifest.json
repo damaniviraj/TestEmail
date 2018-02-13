@@ -1,0 +1,13 @@
+{
+    "name": "My App",
+    "icons": [
+        {
+            "src": "images/favicons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#6e7980",
+    "background_color": "#6e7980",
+    "display": "standalone"
+}

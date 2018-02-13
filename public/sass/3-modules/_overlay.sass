@@ -1,0 +1,119 @@
+$zIndex: 1000
+$header-bg: #eaeef0
+.fa-times-thin:before
+  content: '\00d7'
+.overlay-box
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  z-index: $zIndex
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  align-items: center
+  justify-content: center
+  visibility: hidden
+  opacity: 0
+  +transition
+  .container
+    width: 100%
+  &.opened
+    top: 0
+    visibility: visible
+    opacity: 1
+    .overlay
+      top: 0
+      visibility: visible
+      opacity: 1
+    .overlay-bg
+      opacity: 1
+      visibility: visible
+  .back-btn
+    width: 35px
+    font-size: em(20)
+    font-weight: 300
+    position: relative
+    cursor: pointer
+    .fa
+      +vam
+      line-height: normal
+  .overlay-bg
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    z-index: $zIndex
+    background-color: bgc(#000,.5)
+    visibility: hidden
+    opacity: 0
+    +transition
+  .overlay
+    background-color: #fff
+    z-index: $zIndex + 1
+    position: absolute
+    width: 80%
+    margin: auto
+    position: relative
+    top: 200px
+    opacity: 0
+    visibility: hidden
+    transition-delay: .5s
+    +transition(all .5s $ease-in-out-expo)
+    overflow: hidden
+    +mq(min,1024px)
+      max-width: 800px
+    >header
+      position: absolute
+      left: 0
+      top: 0
+      +ellipsis
+      width: 100%
+      z-index: 10
+      background-color: $header-bg
+      font-size: em(16)
+      display: flex
+      justify-content: space-between
+      h2
+        padding: em(10)
+        flex: 1
+    >main
+      overflow: auto
+      width: 100%
+      height: 100%
+      padding-top: em(60)
+      max-height: 100vh
+    .container
+      padding: em(20) em(10)
+  // type 2 for full height
+  &.type-2
+    .back-btn
+      border-right: 1px solid darken($header-bg,20)
+      width: 50px
+    +mq(max,1023px)
+      display: block
+      background-color: #fff
+      .overlay
+        left: 0
+        height: 100%
+        width: 100%
+        min-height: 0
+        max-height: none
+        >main
+          height: 100vh
+    .overlay
+      right: -100%
+      top: 0
+      left: auto
+      +mq(min,1024px)
+        max-width: 600px
+        height: 100vh
+        position: fixed
+        +transform(none)
+    &.opened
+      .overlay
+        right: 0
+        visibility: visible
+        opacity: 1

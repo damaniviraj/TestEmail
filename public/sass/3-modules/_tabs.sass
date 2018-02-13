@@ -1,0 +1,26 @@
+.tab-holder
+  margin-bottom: em(20)
+  .container
+    width: 100%
+  .tab-links
+    ul
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      li
+        padding: em(10) em(20)
+        cursor: pointer
+        background-color: lighten(#fff,10)
+        &.active
+          background-color: $primary
+          color: $primary-color
+          text-transform: uppercase
+          font-size: em(16)
+          font-weight: 300
+  .tab-results
+    background-color: lighten(#fff,10)
+    padding: em(10) em(20)
+    .tab
+      display: none
+      &.active
+        display: block

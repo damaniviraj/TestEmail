@@ -1,0 +1,121 @@
+.header
+  background-color: #fff
+  justify-content: space-between
+  box-shadow: 0 0 em(10) bgc(#e0e7ea,.5)
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  z-index: 501
+  +mq(max,1023px)
+    text-align: center
+  .toggle-btn
+    position: absolute
+    left: 0
+    top: 50%
+    +transform(translateY(-50%))
+    +size(40px)
+    border-radius: 50%
+    cursor: pointer
+    +mq(min,1024px)
+      display: none
+    span
+      width: 60%
+      background-color: #000
+      display: block
+      height: 1px
+      position: absolute
+      left: 50%
+      top: 50%
+      +transform(translate(-50%,-50%))
+      &:before,&:after
+        position: absolute
+        left: 0
+        top: 0
+        content: ''
+        background-color: #000
+        height: 1px
+        width: 100%
+        +transition(all .3s $ease-in-back)
+        transform-origin: center center
+      &:before
+        top: -7px
+      &:after
+        top: 7px
+  .page-heading
+    width: 20%
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+    h1
+      padding: em(10)
+
+  .logo
+    text-align: center
+    +mq(min,1024px)
+      width: 20%
+      border-right: 1px solid #edf1f3
+    +mq(max,1023px)
+      display: inline-block
+      padding-left: 40px
+    img
+      max-width: em(200)
+      // max-height: em(50)
+      +mq(min,1024px)
+        max-height: em(80)
+        min-height: em(80)
+    a
+      padding: em(10)
+      display: block
+  .custom-dropdown
+    +mq(min,1024px)
+      margin-left: em(20)
+    +mq(max,1023px)
+      display: inline-block
+      margin-right: em(20)
+  .cta
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+    flex: 1
+    +transition
+    width: 16%
+    +mq(min,1024px)
+      justify-content: flex-end
+    +mq(max,1023px)
+      position: fixed
+      left: -100%
+      background-color: #fff
+      justify-content: center
+      bottom: 0
+      height: 50px
+      width: 80%
+      max-width: 300px
+    a
+      text-align: center
+      width: em(100)
+      height: 100%
+      display: inline-block
+      position: relative
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      align-items: center
+      justify-content: center
+      color: #8fa6b1
+      +mq(min,1024px)
+        border-left: 2px solid #edf1f3
+      .icon
+        display: block
+        line-height: 0
+        +vam
+        img
+          max-width: em(30)
+
+  .change-assets
+    min-width: 130px

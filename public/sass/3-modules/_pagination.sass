@@ -1,0 +1,35 @@
+.pagination
+  margin-bottom: em(20)
+  &.lg
+    font-size: em(20)
+  &.sm
+    font-size: em(14)
+  ul
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+
+    .page-item
+      &:first-child
+        .page-link
+          margin-left: 0
+          border-radius: em(3) 0 0 em(3)
+      &:last-child
+        .page-link
+          border-radius: 0 em(3) em(3) 0
+      .page-link
+        &.active,&:hover
+          background-color: $primary
+          color: $primary-color
+      .page-link
+        background-color: #fff
+        padding: em(10)
+        min-width: em(40)
+        text-align: center
+        border: 1px solid $primary
+        margin-left: -1px
+        display: block
+        font-size: em(18)
+      &:last-child
+        border: none

@@ -1,0 +1,131 @@
+table
+  width: 100%
+  overflow: auto
+  margin-bottom: em(40)
+  tr
+    td,th,
+      padding: em(10)
+    &:nth-child(even)
+      background-color: #fff
+    &:nth-child(odd)
+      background-color: #f9f9f9
+    th
+      background-color: #eaeef1
+      color: #7c9099
+      text-align: left
+      font-weight: 800
+      padding: em(15) em(10)
+      text-transform: uppercase
+      border-radius: em(5) em(5) 0 0
+    td
+      padding: em(20) em(10)
+  &.strip
+    tr
+      &:nth-child(even)
+        background-color: #eee
+
+.responsive-table
+  padding-bottom: em(40)
+  dl
+    ul
+      +mq(min,768px)
+        display: -webkit-flex
+        display: -ms-flex
+        display: flex
+    li
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      flex: 1 0 0
+      +cssGrid((5% 50% 45%),1%)
+      .col
+        flex: 1 0 0
+    dt
+      +mq(min,768px)
+        display: block
+        background-color: #eaeef1
+        color: #7c9099
+        border-radius: em(5) em(5) 0 0
+      +mq(max,767px)
+        display: none
+      .col
+        padding: em(15) em(10)
+        text-transform: uppercase
+        font-weight: 800
+    dd
+      border-bottom: 1px solid #eceeed
+      background-color: #fff
+      font-size: em(16)
+      color: #8ba3bb
+      .col
+        padding: em(20) em(10)
+        &.highlight
+          color: #020202
+
+      &:hover
+        +prefix('box-shadow',0 0 em(25) bgc($secondary,.5))
+        position: relative
+        z-index: 5
+    a
+      &.link
+        color: #07a3f6
+
+    .cta
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      flex-wrap: wrap
+      a
+        display: block
+        margin-right: em(10)
+        color: #79919b
+        &:last-child
+          margin: 0
+
+.dataTables_wrapper
+  .dataTables_length
+    width: 50%
+    padding: em(7) 0
+    select
+      display: inline-block
+      width: auto
+      background-color: #fff
+      padding: em(5)
+      margin:  0 em(5)
+  .dataTables_filter
+    width: 50%
+    input
+      display: inline-block
+      width: auto
+  .data-table
+    padding-top: em(20)
+    margin-bottom: em(20)
+  .dataTables_info
+    padding-top: em(5)
+  .paging_simple_numbers
+    padding: 0
+    .paginate_button
+      background-color: #fff
+      border: 1px solid #e9edee !important
+      color: #8eabaf !important
+      margin: 0 em(2)
+      border-radius: em(5)
+      &.disabled
+        background: #fff
+        opacity: .5
+      &.current
+        color: #d8dde0 !important
+        background: #fff
+        &:hover
+          background: #fff
+          color: #d8dde0 !important
+      &:hover
+        background: #fff
+        color: #8eabaf !important
+
+
+    >span
+      display: inline-block
+
+.ui-sortable-helper
+  display: table

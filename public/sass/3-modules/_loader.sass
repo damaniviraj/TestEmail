@@ -1,0 +1,246 @@
+.loader
+  position: fixed
+  left: 0
+  top: 0
+  background-color: #F3F5F7
+  +size(100%)
+  z-index: 1000
+.sk-folding-cube
+  margin: 20px auto
+  width: 40px
+  height: 40px
+  position: absolute
+  left: 50%
+  top: 50%
+  +transform(translate(-50%,-50%) rotate(45deg))
+  .sk-cube
+    float: left
+    width: 50%
+    height: 50%
+    position: relative
+    -webkit-transform: scale(1.1)
+    -ms-transform: scale(1.1)
+    transform: scale(1.1)
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: #344750
+      -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both
+      animation: sk-foldCubeAngle 2.4s infinite linear both
+      -webkit-transform-origin: 100% 100%
+      -ms-transform-origin: 100% 100%
+      transform-origin: 100% 100%
+  .sk-cube2
+    -webkit-transform: scale(1.1) rotateZ(90deg)
+    transform: scale(1.1) rotateZ(90deg)
+  .sk-cube3
+    -webkit-transform: scale(1.1) rotateZ(180deg)
+    transform: scale(1.1) rotateZ(180deg)
+  .sk-cube4
+    -webkit-transform: scale(1.1) rotateZ(270deg)
+    transform: scale(1.1) rotateZ(270deg)
+  .sk-cube2:before
+    -webkit-animation-delay: 0.3s
+    animation-delay: 0.3s
+  .sk-cube3:before
+    -webkit-animation-delay: 0.6s
+    animation-delay: 0.6s
+  .sk-cube4:before
+    -webkit-animation-delay: 0.9s
+    animation-delay: 0.9s
+
+@-webkit-keyframes sk-foldCubeAngle
+  0%, 10%
+    -webkit-transform: perspective(140px) rotateX(-180deg)
+    transform: perspective(140px) rotateX(-180deg)
+    opacity: 0
+
+  25%, 75%
+    -webkit-transform: perspective(140px) rotateX(0deg)
+    transform: perspective(140px) rotateX(0deg)
+    opacity: 1
+
+  90%, 100%
+    -webkit-transform: perspective(140px) rotateY(180deg)
+    transform: perspective(140px) rotateY(180deg)
+    opacity: 0
+
+
+@keyframes sk-foldCubeAngle
+  0%, 10%
+    -webkit-transform: perspective(140px) rotateX(-180deg)
+    transform: perspective(140px) rotateX(-180deg)
+    opacity: 0
+
+  25%, 75%
+    -webkit-transform: perspective(140px) rotateX(0deg)
+    transform: perspective(140px) rotateX(0deg)
+    opacity: 1
+
+  90%, 100%
+    -webkit-transform: perspective(140px) rotateY(180deg)
+    transform: perspective(140px) rotateY(180deg)
+    opacity: 0
+
+.ajax-loader  
+  display: none
+  &.light
+    background-color: bgc(#000,.5)
+  .cssload-square
+    margin: 68px auto
+    width: 19px
+    height: 19px
+    transform: rotate(0deg)
+    -o-transform: rotate(0deg)
+    -ms-transform: rotate(0deg)
+    -webkit-transform: rotate(0deg)
+    -moz-transform: rotate(0deg)
+    +vam
+    top: 40%
+  .cssload-square-part
+    position: absolute
+    width: 19px
+    height: 19px
+    z-index: 1
+    animation: cssload-part-anim 0.92s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate
+    -o-animation: cssload-part-anim 0.92s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate
+    -ms-animation: cssload-part-anim 0.92s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate
+    -webkit-animation: cssload-part-anim 0.92s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate
+    -moz-animation: cssload-part-anim 0.92s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate
+
+  .cssload-square-green
+    background: rgb(84, 250, 212)
+    right: 0
+    bottom: 0
+    animation-direction: alternate-reverse
+    -o-animation-direction: alternate-reverse
+    -ms-animation-direction: alternate-reverse
+    -webkit-animation-direction: alternate-reverse
+    -moz-animation-direction: alternate-reverse
+
+  .cssload-square-pink
+    background: rgb(233, 111, 146)
+    left: 0
+    top: 0
+
+  .cssload-square-blend
+    background: rgb(117, 81, 125)
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    z-index: 2
+    animation: blend-anim 0.92s ease-in infinite
+    -o-animation: blend-anim 0.92s ease-in infinite
+    -ms-animation: blend-anim 0.92s ease-in infinite
+    -webkit-animation: blend-anim 0.92s ease-in infinite
+    -moz-animation: blend-anim 0.92s ease-in infinite
+
+  @keyframes blend-anim
+    0%
+      transform: scale(0.01, 0.01) rotateY(0)
+      animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715)
+
+    50%
+      transform: scale(1, 1) rotateY(0)
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1)
+
+    100%
+      transform: scale(0.01, 0.01) rotateY(0)
+
+
+  @-o-keyframes blend-anim
+    0%
+      -o-transform: scale(0.01, 0.01) rotateY(0)
+      -o-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715)
+
+    50%
+      -o-transform: scale(1, 1) rotateY(0)
+      -o-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1)
+
+    100%
+      -o-transform: scale(0.01, 0.01) rotateY(0)
+
+
+  @-ms-keyframes blend-anim
+    0%
+      -ms-transform: scale(0.01, 0.01) rotateY(0)
+      -ms-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715)
+
+    50%
+      -ms-transform: scale(1, 1) rotateY(0)
+      -ms-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1)
+
+    100%
+      -ms-transform: scale(0.01, 0.01) rotateY(0)
+
+
+  @-webkit-keyframes blend-anim
+    0%
+      -webkit-transform: scale(0.01, 0.01) rotateY(0)
+      -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715)
+
+    50%
+      -webkit-transform: scale(1, 1) rotateY(0)
+      -webkit-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1)
+
+    100%
+      -webkit-transform: scale(0.01, 0.01) rotateY(0)
+
+
+  @-moz-keyframes blend-anim
+    0%
+      -moz-transform: scale(0.01, 0.01) rotateY(0)
+      -moz-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715)
+
+    50%
+      -moz-transform: scale(1, 1) rotateY(0)
+      -moz-animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1)
+
+    100%
+      -moz-transform: scale(0.01, 0.01) rotateY(0)
+
+
+  @keyframes cssload-part-anim
+    0%
+      transform: translate3d(-10px, -10px, 0)
+
+    100%
+      transform: translate3d(10px, 10px, 0)
+
+
+  @-o-keyframes cssload-part-anim
+    0%
+      -o-transform: translate3d(-10px, -10px, 0)
+
+    100%
+      -o-transform: translate3d(10px, 10px, 0)
+
+
+  @-ms-keyframes cssload-part-anim
+    0%
+      -ms-transform: translate3d(-10px, -10px, 0)
+
+    100%
+      -ms-transform: translate3d(10px, 10px, 0)
+
+
+  @-webkit-keyframes cssload-part-anim
+    0%
+      -webkit-transform: translate3d(-10px, -10px, 0)
+
+    100%
+      -webkit-transform: translate3d(10px, 10px, 0)
+
+
+  @-moz-keyframes cssload-part-anim
+    0%
+      -moz-transform: translate3d(-10px, -10px, 0)
+
+    100%
+      -moz-transform: translate3d(10px, 10px, 0)

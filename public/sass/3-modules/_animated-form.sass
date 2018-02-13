@@ -1,0 +1,148 @@
+.form-layout
+  .animated
+    position: relative
+    .form-row
+      &.col-2
+        +clrfix
+        margin: 0 -1%
+        .form-field
+          width: 48%
+          float: left
+          margin: 0 1%
+    .form-field
+      &.static
+        >label
+          position: static
+          pointer-events: all
+        input[type="text"],input[type="password"],input[type="email"],input[type="number"],select,textarea
+          padding: 10px 0
+
+      &.error
+        > label
+          color: #a90000
+        input[type="date"], input[type="email"], input[type="number"], input[type="password"], input[type="text"], select, textarea
+          border-color: #a90000
+          background-color: #fdeded
+          color: #a90000
+      position: relative
+      %cmn
+        font: 14px $pf
+        letter-spacing: 1px
+        color: #5f8287
+      padding-bottom: 8px
+      +mq(min,768px)
+        padding-bottom: 15px
+      +mqh(max,800px)
+        padding-bottom: 10px
+      input[type="text"],input[type="password"],input[type="email"],input[type="number"],select,textarea
+        border-bottom: 1px solid #c9ccab
+        padding: rem(20) 2% rem(10)
+        // border-radius: 3px
+        background-color: #fff
+        @extend %cmn
+        color: darken(#a2a1a1,20%)
+      .error,.invalid_error
+        font-size: 11px
+        color: #f00
+        padding: 5px 0
+      >label
+        width: 98%
+        pointer-events: none
+        position: absolute
+        +prefix('transform-origin',left top)
+        @extend %cmn
+        left: 2%
+        top: 15px
+        +transition
+        font: rem(15) $pf
+        z-index: 2
+      &.focused
+        >label
+          top: 5px
+          +transform(scale(0.8))
+      &.password-help
+        a
+          +mq(min,768px)
+            padding: 10px 25px
+            display: inline-block
+        +mq(max,767px)
+          position: absolute
+          right: 15px
+          bottom: 69px
+          text-align: right
+      .or
+        text-align: center
+        font: 300 rem(20) $pf
+        color: #252525
+      .box-btn
+        &.login-with-fb
+          background-color: #3c5a99
+          .is
+            width: 20px
+          svg
+            +size(100%)
+            fill: #fff
+            stroke: #fff
+      .note
+        text-align: center
+        font: 400 rem(16) $pf
+        color: #a4a3a3
+        letter-spacing: 1px
+      .input-type-radio
+        padding: 10px 0
+        li
+          float: left
+          margin-right: 10px
+        &.gender
+          header
+            font: rem(14) $pf
+            color: #a2a1a1
+            display: inline-block
+            vertical-align: middle
+            width: 30%
+          input[type="radio"]
+            position: absolute
+            left: 0
+            top: 0
+            visibility: hidden
+              // padding:
+            &:checked
+              \+label
+                span
+                  color: $primary
+                .is
+                  svg
+                    fill: $primary
+                    .arrow
+                      opacity: 1
+
+          label
+            display: block
+            vertical-align: middle
+            +clrfix
+            cursor: pointer
+            position: relative
+            pointer-events: all
+            text-align: center
+            vertical-align: middle
+            border: none
+            .is
+              +size(25px 30px)
+              display: inline-block
+              svg
+                width: 100%
+                height: 100%
+                fill: #a2a1a1
+                path.arrow
+                  opacity: 0
+            span
+              display: inline-block
+              vertical-align: middle
+              font: rem(18) $pf
+              letter-spacing: 1px
+              color: #a2a1a1
+              padding-top: 2px
+              &.male
+                text-align: left
+              &.female
+                text-align: right

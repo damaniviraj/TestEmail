@@ -1,0 +1,339 @@
+.order-review
+  .main-cnt
+    overflow: hidden
+.prescriptions-img
+  position: relative
+  width: 100%
+  border-right: 4px solid #ddd
+  height: 100%
+  display: flex
+  flex-direction: column
+  .large-img
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-basis: 100%
+    padding: em(20) 0
+    height: 100%
+    img
+      width: auto !important
+      max-height: 100%
+  .thumbs
+    ul
+      display: flex
+    li
+      width: 100px
+      border: 1px solid lighten(#000,50%)
+      margin: 0 em(5)
+      position: relative
+      display: flex
+      align-items: center
+      background-color: #fff    
+      h4
+        padding: em(5) em(10)
+        +ellipsis
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        background-color: #fff
+.ajax-loader
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  z-index: 20
+.order-details
+  height: 100%
+  .bg
+    position: absolute
+    width: 100%
+    height: 100%
+    background-color: bgc(#000,.5)
+    left: 0
+    top: 0
+    display: none
+  .aside
+    position: relative
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    flex-direction: column
+    align-content: space-between
+    height: 100%
+    justify-content: space-between
+  .block,.cart
+    background: #ffffff
+    padding: em(10) 0
+    border-radius: em(5)
+    justify-content: space-between
+    position: relative
+    >header
+      position: absolute
+      left: 0
+      top: 0
+      padding: em(5) em(10)
+      width: 100%
+      h3
+        padding: 0
+    .products
+      height: 100%
+      overflow-y: auto
+      padding-top: 25px
+      ul
+        max-height: 100%
+        overflow: auto
+        li
+          padding-left: em(10)
+          padding-right: em(10)
+          
+
+      .product-quantity
+        font-size: 12px
+        &:before
+          display: inline-block
+          content: 'X'
+          padding: 0 2px 0 0 
+          
+      .price
+        display: flex
+        >span 
+          padding-right: em(5)
+          .mrp
+
+      .form-layout
+        .form-row
+          margin: 0
+    &.order-search
+      height: 55px
+      padding-left: em(10)
+      padding-right: em(10)
+      // margin-bottom: em(20)
+    &.search-results
+      height: 40%
+      // margin-bottom: em(20)
+      position: relative
+    &.final-cart
+      height: 45%
+      position: relative
+      .page-not-found 
+        padding-top: 30px
+      .products
+        padding-bottom: 50px
+      form 
+        height: 100%
+      .form-layout
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        padding: em(12)
+        box-shadow: $bxShadow
+        background-color: #fff
+        z-index: 5
+        .cta
+          padding: 0
+          .amount
+            text-align: left
+            padding-left: 0
+          h5 
+            font-size: em(12)
+            text-transform: uppercase
+
+
+
+    >header
+      display: flex
+      justify-content: space-between
+      align-items: center
+      border-bottom: 2px solid #444
+      background-color: #ffffff
+      
+      .cta
+        display: flex
+        h5
+          padding: 0 5px 0 0
+
+        li 
+          a 
+            text-transform: uppercase
+            color: $warning
+            font-size: em(14)
+    &.final-cart
+      margin-bottom: 0
+    &.search-results
+      display: none
+      .suggestion-ul
+        max-height: 100%
+        overflow: auto
+  .substitue
+    background-color: #fff
+    padding: em(10) em(20)
+    >ul
+      >li
+        margin-bottom: em(20)
+        border-bottom: 2px solid #000
+        align-items: center
+        .list
+          li 
+            align-items: center
+          .cta .fa
+            font-size: inherit
+        h3 
+          span 
+            font-weight: 300
+            font-size: 18px
+  .products,.substitue .list
+    .checkbox,li
+      padding: em(10) 0
+      border-bottom: 1px solid $secondary
+      cursor: pointer
+      display: flex
+      width: 100%
+      margin: 0
+      justify-content: space-between
+      align-items: center
+      &:last-child
+        border-bottom: none
+      input[type="checkbox"], input[type="radio"]
+        margin-top: 2px
+      label
+        display: flex
+        width: 100%
+        align-items: center
+    .total
+      justify-content: flex-end
+      border-top: 2px solid #eee
+      padding-top: em(10)
+    .info
+      width: 60%
+      .category
+        font-weight: 300
+      .cta
+        padding: 0
+        margin: 0
+        ul
+          display: flex
+        li
+          padding: 0
+          color: $warning
+          text-transform: uppercase
+          font-size: em(12)
+          padding-top: em(5)
+          a
+            color: $warning
+
+    .cta
+      padding: 0 em(10)
+      button
+        padding: em(5)
+      .fa
+        font-size: em(35)
+        color: bgc(#000,.5)
+    .amount
+      text-align: right
+      font-size: em(20)
+      padding-left: em(20)
+    .qty-cnt
+      display: flex
+      width: 70px
+      input
+        border-radius: em(5) 0 0 em(5)
+        padding: em(5) em(10)
+      .buttons
+        display: flex
+        flex-direction: column
+        button
+          background-color: $warning
+          color: #ffffff
+          border: none
+          flex: 1
+          font-size: em(18)
+          line-height: 15px
+          cursor: pointer
+          &.add
+            border-bottom: 1px solid #fff
+            border-radius: 0 em(5) 0 0
+            background-color: $primary
+          &.subtract
+            border-radius: 0 0 em(5) 0
+  .carts
+    
+.order-search
+  .search-cnt
+    position: relative
+    input
+      padding-right: 60px
+    .search-btn
+      position: absolute
+      right: 0
+      top: 0
+      height: 100%
+      width: 50px
+      padding: 0
+      font-size: em(18)
+      background-color: transparent
+      border: none
+    .search-suggestions
+      position: absolute
+      left: 0
+      width: 100%
+      background-color: #fff
+      box-shadow: $bxShadow
+      max-height: 300px
+      overflow: auto
+      display: none
+      li
+        padding: em(10)
+        border-bottom: 1px solid $secondary
+        cursor: pointer
+        &:hover
+          background-color: #eee
+        &:last-child
+          border-bottom: none
+        h5
+          padding-bottom: 0
+        .category
+          font-weight: 300
+
+
+.user-products
+  padding: em(10)
+  background-color: #fff
+
+.checkboxes
+  input[type="hidden"]
+    position: absolute
+    left: 0
+    top: 0
+.substitute
+  height: 100%
+  form
+    height: 100%
+  .grid-layout
+    height: 100%
+  .carts
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    padding-bottom: 60px
+    height: 100%
+    position: relative
+    .products
+      overflow: hidden
+      ul
+        max-height: 100%
+        overflow: auto
+    >.cta
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 100%
+  .block
+    height: 48%
+    margin: 0
+    position: relative
+    &.list
+      height: 100%
+    

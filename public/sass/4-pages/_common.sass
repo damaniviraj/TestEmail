@@ -1,0 +1,59 @@
+.wrapper
+  &.dashboard
+    .main-cnt
+      width: 100%
+  &.nav-opened
+    +mq(max,1023px)
+      .toggle-btn
+        span
+          background-color: transparent
+          &:before,&:after
+            top: 0 
+          &:before
+            +transform(rotate(45deg))
+          &:after
+            +transform(rotate(-45deg))
+      .nav
+        left: 0
+      .header
+        .cta
+          left: 0
+.listing-page
+  overflow: auto
+  .content-area
+    padding-top: em(20)
+.content-area
+  padding-top: em(100)
+  +mq(min,1024px)
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    height: 100vh
+  .nav
+    +mq(min,1024px)
+      width: 20%
+    +mq(max,1023px)
+      width: 80%
+      padding-bottom: 50px
+
+  .main-cnt
+    +mq(min,1024px)
+      width: 80%
+      padding: em(20) 0
+      overflow: auto
+    +mq(max,1023px)
+      padding: em(20) 0
+.code-ref
+  padding: em(40) 0
+  >header
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    justify-content: space-between
+.grn-add-new
+  .main-cnt
+    .container
+      padding-bottom: 150px
+  .box
+    .box-content
+      padding: em(20)

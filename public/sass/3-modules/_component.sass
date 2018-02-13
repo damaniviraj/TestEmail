@@ -1,0 +1,145 @@
+%closebtn
+  position: absolute
+  right: 20px
+  top: 20px
+  cursor: pointer
+
+%overlayBg
+  position: fixed
+  left: 0
+  top: 0
+  +size(100%)
+  background-color: bgc(#000,.5)
+  opacity: 0
+  visibility: hidden
+  +transition
+
+.custom-select
+  background-color: $custom-select-bg
+  border-radius: 50px
+  &.input-type-select
+    &:after
+      border-top-color: $custom-select-color
+  select
+    text-transform: uppercase
+    font-weight: 300
+    font-size: em(14)
+    font-family: $pf
+    border-radius: 50px
+    color: $custom-select-color
+    border: none
+    line-height: 15px
+    padding: em(12) em(40) em(12) em(16)
+    option
+      color: #444
+
+.custom-dropdown
+  position: relative
+  .custom-dropdown-trigger
+    padding: em(5) em(20) em(5) em(5)
+    cursor: pointer
+    position: relative
+    &::after
+      position: absolute
+      right: 0
+      top: 50%
+      +transform(translateY(-50%))
+      +fa('\f078')
+        font-size: em(10)
+        color: #444
+  &.show
+    .custom-dropdown-content
+      display: block
+  .custom-dropdown-content
+    display: none
+    background-color: #fff
+    +prefix('box-shadow',$bxShadow)
+    position: absolute
+    li
+      padding: em(15) em(20)
+
+ol.list,ul.list
+  margin-left: 27px
+  padding-bottom: 14px
+  font: rem(20) $sf
+  li
+    padding: 5px 0 5px 7px
+  &.bullet
+    margin-left: 10px
+    li
+      background: bg('bullet.png') no-repeat scroll left center rgba(0, 0, 0, 0)
+      padding: 5px 0 5px 18px
+
+  @each $listType in $types
+    &.#{$listType},&.#{$listType}
+      li
+        list-style-type: $listType
+
+.info-cards
+  +mq(min,641px)
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    flex-wrap: wrap
+    margin: 0 -1%
+  .info-card
+    margin: 0 1% em(20)
+    +mq(min,641px)
+      width: 48%
+    +mq(min,769px)
+      width: 31.33%
+    +mq(min,1400px)
+      width: 23%
+    a
+      border-radius: em(2)
+      align-items: center
+      +prefix('box-shadow', $bxShadow)
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      padding: em(15)
+      background-color: #fff
+    .info-card-icon
+      display: block
+      width: 70px
+    .info-card-content
+      padding-left: em(15)
+      display: block
+      .info-card-heading
+        color: #344750
+        font-size: em(22)
+        font-family: $sf
+        display: block
+        a
+          color: #344750
+
+      .info-card-count
+        color: #adbec5
+        display: block
+        a
+          color: #adbec5
+
+
+.box
+  +prefix('box-shadow', 0 0 em(20) #eaeef0)
+  border-radius: em(5)
+  margin-bottom: em(20)
+  .box-header
+    padding: em(16)  em(20)
+    background-color: #dedede
+    color: #6d7071
+    font-size: em(16)
+    border-radius: em(5) em(5) 0 0
+  .box-content
+    padding: em(20) em(40)
+    background-color: #fff
+  .box-footer
+    padding: em(10) em(15)
+    background-color: #efefef
+
+.search-filter
+  padding: em(20) 0
+  font-size: em(17)
+
++color-varient($bg:true,$prefix:bg)
++color-varient($color:true,$prefix:text)

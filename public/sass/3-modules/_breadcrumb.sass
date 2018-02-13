@@ -1,0 +1,35 @@
+.breadcrumb
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  padding: em(10) 0
+  border-bottom: 1px solid #e8e9ed
+  width: 96%
+  margin: auto
+  .breadcrumb-item
+    position: relative
+    padding-right: em(15)
+    margin-right: em(10)
+    color: #90a4ab
+    &:last-child
+      margin: 0
+      padding: 0
+      &:after
+        display: none
+
+    &:after
+      position: absolute
+      right: 0
+      top: 50%
+      +transform(translateY(-50%))
+      font-size: em(18)
+      content: '/'
+      color: lighten(#363D4D,40)
+    a
+      color: #05b1f3
+      font-weight: 300
+      font-size: em(16)
+      &:hover
+        text-decoration: underline
+    &.current
+      font-weight: 600

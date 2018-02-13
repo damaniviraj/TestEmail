@@ -1,0 +1,409 @@
+$form-border-color: #e5eaed
+$textarea-height: 200px
+$button-base-color: #00aff0
+/*form tag*/
+$pad: 12px
+$input-font-size: 14px
+
+#{$all-text-inputs},select,textarea
+  width: 100%
+  padding: em($pad) em(18)
+  border: 1px solid $form-border-color
+  margin: 0
+  +transition
+  font-size: em($input-font-size)
+  +prefix('box-shadow',none)
+  border-radius: em(5)
+  +placeholders
+    font-weight: 300
+    color: #000
+    opacity: .7
+  &[disabled="disabled"]
+    background-color: $form-border-color
+select
+  background-color: #fff
+  padding: em($pad) em(18px)
+  cursor: pointer
+  +prefix('appearance', none)
+textarea
+  height: $textarea-height
+  max-width: 100%
+  height: 120px
+  resize: none
+.select2-dropdown
+  border-color: $form-border-color
+.input-type-select
+  .select2-container--default .select2-selection--single
+    border: 1px solid $form-border-color
+    background-color: #fff
+    padding: em($pad - 3) em(18px)
+    cursor: pointer
+    +prefix('appearance', none)
+    height: auto
+    line-height: normal
+  .select2-container--default .select2-selection--single .select2-selection__rendered
+    line-height: normal
+    padding: 0
+  .select2-selection__arrow
+    display: none
+
+input[type="checkbox"],
+input[type="radio"]
+  display: inline-block
+  vertical-align: middle
+  margin: 0 5px 0 0
+/*Form Tag end*/
+
+/*Common Buttons*/
+
+#{$all-buttons},a
+  &.box-btn,
+    background-color: transparent
+    border: none
+    cursor: pointer
+    +prefix('box-shadow',none)
+    display: inline-block
+    margin-right: em(10)
+    cursor: pointer
+    padding: em($pad) em(20px)
+    vertical-align: middle
+    text-decoration: none
+    text-align: center
+    +transition
+    font-size: em($input-font-size)
+    border-radius: em(2)
+    text-transform: uppercase
+    border: 1px solid
+    &:last-child
+      margin: 0
+    .fa
+      padding-right: em(5)
+    &.alert
+      // overwriting chrome ajent css
+      margin-bottom: 0
+
+  &.full
+    display: block
+    width: 100%
+    margin: 0
+  +color-varient($bg:true,$hover:true,$brdr: 1px solid )
+  &.lg
+    font-size: em(18)
+  &.sm
+    font-size: em(12)
+  &.xs
+    font-size: em(10)
+  &.plain
+    border-radius: em(5)
+@-moz-document url-prefix()
+  a.box-btn
+    padding-top: em($pad) + em(1px)
+    padding-bottom: em($pad) + em(1px)
+// Common buttons end
+.input-type-file
+  .inputfile
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    z-index: -1
+    \+label
+      border: 1px solid $form-border-color
+      display: block
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      border-radius: em(5)
+      span
+        flex: 1
+        padding: em(10) em(15)
+        font-size: em(16)
+        font-weight: 400
+      strong
+        display: inline-block
+        font-size: em(16)
+        padding: em(10) em(15)
+        font-weight: 700
+        cursor: pointer
+        +color-varient($bg:true,$hover:true)
+        border-radius: 0 rem(5) rem(5) 0
+      .fa
+        margin-right: em(5)
+// Custom input types
+.input-type-select
+  // overflow: hidden
+  width: 100%
+  position: relative
+  $w: 40px
+  &:before,&:after
+    content: ''
+    pointer-events: none
+  &:before
+    content: ''
+    position: absolute
+    right: 0
+    top: 0
+    background-color: transparent
+    width: em($w)
+    height: 100%
+  &:after
+    +triangle(em(12px),#000, down)
+    content: ""
+    position: absolute
+    top: 50%
+    +transform(translateY(-50%))
+    right: em(($w / 2) - 6px)
+
+span,label
+  &.has-error,&.error
+    color: #f00
+    display: inline-block
+    font-size: em(12)
+    margin-top: em(10)
+.radios,.checkboxes
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  flex-wrap: wrap
+  label
+    font-size: em($input-font-size)
+    display: inline-block
+    position: relative
+    cursor: pointer
+  &.custom
+    label
+      padding-left: em(20)
+
+.checkboxes
+  .checkbox
+    margin-right: em(10)
+  &.custom
+    .checkbox
+      input[type="checkbox"]
+        position: absolute
+        left: 0
+        top: 0
+        opacity: 0
+        visibility: hidden
+        &:checked
+          \+label
+            &:before
+              background-color: darken($form-border-color,20%)
+            &:after
+              display: block
+      label
+        &:before
+          border-radius: 3px
+          margin-right: em(5)
+          vertical-align: middle
+          border: 1px solid darken($form-border-color,20%)
+          left: 0
+        &:before,&:after
+          content: ''
+          display: inline-block
+          +size(em(15))
+          position: absolute
+          top: 50%
+          +transform(translateY(-50%))
+        &:after
+          font-family: $fa
+          content: '\f00c'
+          color: #fff
+          left: em(4px)
+          font-size: em(10)
+          display: none
+
+.radios
+  .radio
+    margin-right: em(10)
+    &:last-child
+      margin: 0
+  &.custom
+    .radio
+      input[type="radio"]
+        position: absolute
+        left: 0
+        top: 0
+        opacity: 0
+        visibility: hidden
+        &:checked
+          \+label
+            &:after
+              background-color: darken($form-border-color,30)
+              display: block
+      label
+        &:before
+          border-radius: 3px
+          margin-right: em(5)
+          vertical-align: middle
+          border: 1px solid darken($form-border-color,30)
+          left: 0
+          +size(em(15))
+        &:before,&:after
+          content: ''
+          display: inline-block
+          position: absolute
+          top: 50%
+          +transform(translateY(-50%))
+          border-radius: 50%
+        &:after
+          left: em(4px)
+          font-size: em(10)
+          display: none
+          +size(em(16))
+.form-layout
+  font-size: rem(17)
+  .form-row
+    +mq(min,641px)
+      margin: 0 em(-10)
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      flex-wrap: wrap
+      flex-basis: 100%
+    @for $i from 1 through 12
+      $k: (100% / 12)
+      .grid-#{$i}
+        flex: 0 0 ($k * $i)
+    &.fixed-bottom
+      position: fixed
+      left: 0
+      bottom: 0
+      width: 80%
+      margin-left: 20%
+      padding: em(20)
+      background-color: #fff
+      box-shadow: 20px 0 10px #e0e7ea
+    &:last-child
+      .form-field
+        padding-bottom: 0
+  .sub-form-row
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    flex-wrap: wrap
+    flex-basis: 100%
+    padding-bottom: em(20)
+    &:last-child
+      padding-bottom: 0
+  .form-field
+    padding-bottom: em(20)
+    &.wo-label
+      display: flex
+      align-items: flex-end
+    +mq(min,641px)
+      padding-left: em(10)
+      flex: 1 0 0
+      padding-right: em(10)
+    +mq(max,768px)
+      flex-basis: 50%
+
+    &.mandatory
+      >label
+        &:after
+          content: '*'
+          font-size: em(12)
+          display: inline-block
+          margin-left: em(3)
+          color: $danger
+    &.lg
+      font-size: rem(18)
+    &.sm
+      font-size: rem(14)
+    >label
+      padding-bottom: em(5)
+      display: block
+      color: #8ca4af
+      font-size: em(14)
+
+    .input-group
+      display: -webkit-flex
+      display: -ms-flex
+      display: flex
+      .addon
+        &:last-child
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
+        &:first-child
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0
+      input
+        &:last-child
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
+        &:first-child
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0
+    .addon
+      padding: em($pad) em(20px)
+      background-color: $form-border-color
+      font-size: em($input-font-size)
+      border-radius: em(5)
+
+      line-height: 15px
+
+.form-layout
+  &.animated
+    position: relative
+    .form-field
+      position: relative
+      padding-bottom: 8px
+      &.static
+        >label
+          position: static
+          pointer-events: all
+        #{$all-text-inputs},select,textarea
+          padding: em(10px) 0
+      &.error
+        > label
+          color: #a90000
+        #{$all-text-inputs},select,textarea
+          border-color: #a90000
+          background-color: #fdeded
+          color: #a90000
+      #{$all-text-inputs},select,textarea
+        padding: em(20) em(10) em(8)
+      .error,.invalid_error
+        font-size: em(11px)
+        color: #f00
+        padding: em(5px) 0
+      >label
+        width: 98%
+        pointer-events: none
+        position: absolute
+        +prefix('transform-origin',left top)
+        left: em(10)
+        top: em(15)
+        +transition
+        z-index: 2
+      &.focused
+        >label
+          top: em(5)
+          +transform(scale(0.8))
+
+.search-bar
+  position: relative
+  #{$all-text-inputs}
+    border-radius: 50px
+    padding-right: em(60)
+  .search-btn
+    position: absolute
+    right: 0
+    top: 0
+    height: 100%
+    width: 50px
+    background-color: transparent
+    color: $primary
+    border: none
+    +prefix('box-shadow', none)
+    cursor: pointer
+    padding: 0
+    font-size: em(20px)
+
+// type of form
+.form-layout
+  &.two-layout-coloumn
+    padding: em(10)
+    background: #fff
+    border-radius: em(5)

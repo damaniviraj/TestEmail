@@ -1,0 +1,118 @@
+.message
+  padding: em(10) em(15)
+  font-size: em(14)
+  font-weight: 400
+  margin-bottom: em(15)
+  border-radius: em(5)
+  position: relative
+  width: 100%
+  text-align: center
+  &:last-child
+    margin-bottom: 0
+  .btn
+    +btn('close', 20px, #fff)
+      position: absolute
+      right: em(10)
+      top: 50%
+      +transform(translateY(-50%))
+      cursor: pointer
+  p
+    font-size: em(16)
+    line-height: em(24)
+    &:last-child
+      padding: 0
+      margin: 0
+  &.success
+    background-color: $success
+    color: $success-color
+  &.danger
+    background-color: $danger
+    color: $danger-color
+  &.alert
+    background-color: $alert
+    color: $alert-color
+    .btn
+      +btn('close', 20px, $alert-color)
+        position: absolute
+        right: em(10)
+        top: 50%
+        +transform(translateY(-50%))
+  &.warning
+    background-color: $warning
+    color: $warning-color
+
+
+.toast-message
+  position: fixed
+  max-width: 400px
+  z-index: 1000
+  border-radius: em(3)
+  $spacing: em(10)
+  +color-varient($bg:true)
+  padding: em(10) em(15)
+  font-size: em(18)
+  +transition
+  p
+    &:last-child
+      padding: 0
+      margin: 0
+  +color-varient($bg:true)
+
+  &.top-left
+    left: -120%
+    top: $spacing
+    &.active
+      left: $spacing
+  &.top-right
+    top: $spacing
+    right: -120%
+    &.active
+      right: $spacing
+  &.bottom-right
+    right: -120%
+    bottom: $spacing
+    &.active
+      right: $spacing
+  &.bottom-left
+    left: -120%
+    bottom: $spacing
+    &.active
+      left: $spacing
+  &.top-center
+    +transform(translateX(-50%))
+    left: 50%
+    top: -300px
+    &.active
+      top: $spacing
+  &.bottom-center
+    left: 50%
+    +transform(translateX(-50%))
+    bottom: -300px
+    &.active
+      bottom: $spacing
+
+.pop-messages
+  position: fixed
+  left: 50%
+  top: -120%
+  +transform(translateX(-50%))
+  z-index: 1020
+  background-color: #fff
+  padding: em(20)
+  +prefix('box-shadow',0 0 20px #444)
+  +transition
+  max-width: 400px
+  &.show
+    top: em(10)
+  p
+    font-size: em(18)
+  .btn
+    &.close
+      +btn('close',25px)
+        position: absolute
+        right: em(5)
+        top: em(5)
+        cursor: pointer
+  .cta
+    text-align: center
+    padding-top: em(10)

@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var form = require('express-form'),
   field = form.field;
-var pdf = require('handlebars-pdf')
+var pdf = require('handlebars-pdf');
+
 
 //var sg = require('sendgrid');
 /* GET home page. */
@@ -58,6 +59,16 @@ pdf.create(document)
   .catch(error => {
       console.error(error)
   })
+    res.render('index', { title: 'Express' });
+    
+
+  })
+
+  router.get('/machineid',
+  function (req, res) {
+    
+
+
     res.render('index', { title: 'Express' });
     
 

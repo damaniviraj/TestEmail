@@ -1,0 +1,76 @@
+
+\:root
+  font-size: $rootSize
+  +mq(max,786px)
+    font-size: 16px
+/*Global Css starts*/
+a
+  color: $link-color
+  text-decoration: none
+  outline: none
+  +transition(all 0.5s ease)
+
+body
+  line-height: 1
+  position: relative
+*
+  +sizing(border-box)
+  +break-word(keep-all)
+  &:after,
+  &:before
+    @extend *
+img
+  max-width: 100%
+  vertical-align: middle
+.order-review
+  .container
+    height: 96%
+.container
+  margin: 0 auto
+  width: 96%
+  padding: em(20) 0
+  min-height: 96%
+  +mq(min,1920px)
+    max-width: 1800px
+
+.fl
+  float: left
+.fr
+  float: right
+.text-right
+  text-align: right
+.text-left
+  text-align: left
+.text-center
+  text-align: center
+.hide
+  display: none
+.stroke-out
+  text-decoration: line-through
+.bold
+  font-weight: 800
+
+$display-list: block, table, table-cell, table-row, flex,flow-root, contents,grid,inline-block,inline,inline-flex,inline-table,inline-grid,none,table-caption
+@each $display in $display-list
+  .display-#{$display}
+    display: $display
+p
+  font: 300 rem(16) / rem(24) $sf
+  padding-bottom: 12px
+
+
+// including clear
++clear(3, 20)
+
+.desktop-only
+  display: block
+
+.mobile-only,
+.tab-mobile-only,
+.tab-only
+  display: none
+/*Global Css End*/
+
+
+.w-100
+  width: 100% !important

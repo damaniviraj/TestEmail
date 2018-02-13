@@ -1,0 +1,247 @@
+@import "_variable.sass"
+@function bg($imageName)
+  @return url($image-path + $imageName)
+
+@function bgc($color,$opacity:1)
+  @return rgba($color,$opacity)
+
+=prefix($property,$value)
+  -webkit-#{$property}: $value
+  -o-#{$property}: $value
+  -moz-#{$property}: $value
+  -ms-#{$property}: $value
+  #{$property}: $value
+
+=ib($align:middle)
+  display: inline-block
+  vertical-align: $align
+
+=placeholders
+  &::-webkit-input-placeholder
+    @content
+
+  &:-moz-placeholder
+    @content
+
+  &::-moz-placeholder
+    @content
+
+  &:-ms-input-placeholder
+    @content
+
+  &:placeholder
+    @content
+
+=vam($left:50%,$top:50%)
+  position: absolute
+  left: $left
+  top: $top
+  +transform(translate(-($left),-($top)))
+
+=transform($prop...)
+  +prefix( 'transform',$prop)
+=box-shadow($prop...)
+  +prefix( 'box-shadow',$prop)
+=sizing($prop)
+  +prefix( 'box-sizing',$prop)
+
+=break-word($prop)
+  +prefix( 'word-break',$prop)
+
+=clrfix
+  &:after
+    clear: both
+    content: ''
+    display: block
+
+
+
+=clear($count , $increment)
+  %clear,
+  .clear
+    clear: both
+
+  @for $i from 1 through $count
+    .clear#{$increment * $i}
+      @extend %clear
+      height: em($increment * $i)
+
+=socialMedia($ext, $prop...)
+  @each $list in $prop
+    .#{$list}
+      background: bg($list + ($ext))
+
+
+
+=wh($prop)
+  width: $prop
+  height: $prop
+
+
+=cg($col,$spc)
+  width: (100% - ($spc * ($col - 1))) / $col
+  margin-right: $spc
+  margin-bottom: $spc
+  float: left
+  &:nth-child(#{$col}n+#{$col})
+    margin-right: 0
+
+  /*Session error message end*/
+=btn($type, $size, $clr:#000)
+  @if $type == 'close'
+    &.close
+      width: $size
+      height: $size
+      position: relative
+      @content
+      &:before,&:after
+        width: 80%
+        height: 2px
+        +vam
+        background-color: $clr
+        content: ''
+      &:before
+        +transform(translate(-50%,-50%) rotate(45deg))
+      &:after
+        +transform(translate(-50%,-50%) rotate(-45deg))
+
+=fa($code)
+  font-family: $fa
+  content: $code
+  @content
+
+=color-varient($bg:false,$color:false,$hover:false,$prefix:false,$brdr:false)
+  @if ($prefix)
+    .#{$prefix}-primary
+      @if ($brdr)
+        border: $brdr darken($primary,10%)
+      @if ($bg)
+        background-color: $primary
+        color: $primary-color
+      @if ($color)
+        color: $primary
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($primary, 10%)
+    .#{$prefix}-secondary
+      @if ($brdr)
+        border: $brdr darken($secondary,10%)
+      @if ($bg)
+        background-color: $secondary
+        color: $secondary-color
+      @if ($color)
+        color: $secondary
+      @if ($hover)
+        &.active,&:hover
+          background-color: lighten($secondary, 10)
+    .#{$prefix}-success
+      @if ($brdr)
+        border: $brdr darken($success,10%)
+      @if ($bg)
+        background-color: $success
+        color: $success-color
+      @if ($color)
+        color: $success
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($success, 10%)
+    .#{$prefix}-danger
+      @if ($brdr)
+        border: $brdr darken($danger,10%)
+      @if ($bg)
+        background-color: $danger
+        color: $danger-color
+      @if ($color)
+        color: $danger
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($danger, 10%)
+    .#{$prefix}-alert
+      @if ($brdr)
+        border: $brdr darken($alert,10%)
+      @if ($bg)
+        background-color: $alert
+        color: $alert-color
+      @if ($color)
+        color: $alert
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($alert, 10%)
+    .#{$prefix}-warning
+      @if ($brdr)
+        border: $brdr darken($warning,10%)
+      @if ($bg)
+        background-color: $warning
+        color: $warning-color
+      @if ($color)
+        color: $warning
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($warning, 10%)
+  @else
+    &.primary
+      @if ($brdr)
+        border: $brdr darken($primary,10%)
+      @if ($bg)
+        background-color: $primary
+        color: $primary-color
+      @if ($color)
+        color: $primary
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($primary, 10%)
+    &.secondary
+      @if ($brdr)
+        border: $brdr darken($secondary,10%)
+      @if ($bg)
+        background-color: $secondary
+        color: $secondary-color
+      @if ($color)
+        color: $secondary
+      @if ($hover)
+        &.active,&:hover
+          background-color: lighten($secondary, 10)
+    &.success
+      @if ($brdr)
+        border: $brdr darken($success,10%)
+      @if ($bg)
+        background-color: $success
+        color: $success-color
+      @if ($color)
+        color: $success
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($success, 10%)
+    &.danger
+      @if ($brdr)
+        border: $brdr darken($danger,10%)
+      @if ($bg)
+        background-color: $danger
+        color: $danger-color
+      @if ($color)
+        color: $danger
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($danger, 10%)
+    &.alert
+      @if ($brdr)
+        border: $brdr darken($alert,10%)
+      @if ($bg)
+        background-color: $alert
+        color: $alert-color
+      @if ($color)
+        color: $alert
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($alert, 10%)
+    &.warning
+      @if ($brdr)
+        border: $brdr darken($warning,10%)
+      @if ($bg)
+        background-color: $warning
+        color: $warning-color
+      @if ($color)
+        color: $warning
+      @if ($hover)
+        &.active,&:hover
+          background-color: darken($warning, 10%)

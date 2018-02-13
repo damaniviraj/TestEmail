@@ -1,0 +1,66 @@
+=mq($arg...)
+  @if type_of(nth($arg,1)) == string
+    @media (#{nth($arg,1)}-width: nth($arg,2))
+      @content
+  @else
+    @media (min-width: nth($arg,1)) and (max-width: nth($arg,2))
+      @content
+
+=mqh($arg...)
+  @if type_of(nth($arg,1)) == string
+    @media (#{nth($arg,1)}-height: nth($arg,2))
+      @content
+  @else
+    @media (min-height: nth($arg,1)) and (max-height: nth($arg,2))
+      @content
+
+
+$pf: 'Lato', sans-serif
+$sf: 'Nunito', sans-serif
+$fa: 'FontAwesome'
+
+
+$image-path: '../images/'
+
+
+$rootSize: 14px
+
+
+
+//colors in websites
+$primary: #ff782d
+$primary-color: #fff
+
+$secondary: #a0a3a5
+$secondary-color: #fff
+
+
+$success: #22cf53
+$success-color: #fff
+
+$danger: lighten(#f00,20)
+$danger-color: #fff
+
+$alert: #fff
+$alert-color: #444
+
+$warning: #189ae6
+$warning-color: #fff
+
+$custom-select-bg: #ff782d
+$custom-select-color: #fff
+
+$body-bg: #f3f5f7
+$link-color: #000
+
+
+// font sizes
+$body-size: 16
+$heading-size: 34
+$heading-size-differnce: 3
+$footer-height: 0
+
+// list types
+$types: disc  decimal
+
+$bxShadow : 0 0 10px #e0e7ea

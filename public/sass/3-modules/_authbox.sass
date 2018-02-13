@@ -1,0 +1,37 @@
+.auth-box
+  position: fixed
+  left: 50%
+  top: 50%
+  +transform(translate(-50%,-50%))
+  max-width: 400px
+  width: 100%
+  background-color: #fff
+  +prefix('box-shadow',$bxShadow)
+  border-radius: em(20)
+  padding: em(15) em(30)
+  .auth-header
+    padding: em(20) em(15)
+    text-align: center
+    +ellipsis
+    width: 100%
+    font-size: em(22)
+    color: lighten(#344750, 30)
+    margin-top: em(-15)
+
+  .auth-content
+    .input-group
+      position: relative
+      .addon
+        position: absolute
+        left: em(10)
+        top: 50%
+        +transform(translateY(-50%))
+        background-color: transparent
+        padding: 0
+        font-size: em(20)
+        color: lighten(#344750, 50)
+        .fa
+          width: 20px
+          text-align: center
+      #{$all-text-inputs}
+        padding-left: em(50)
