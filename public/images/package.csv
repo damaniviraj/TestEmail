@@ -1,0 +1,12 @@
+﻿id,name,description,short_description,price,type,status,lims_male_profile_id,lims_female_profile_id,added_on,updated_on
+1,Complete Health Checkup,"Cost includes:
+                                                                                - Home sample collection charges 
+                                                                                - Full health reports for 9 lifestyle diseases
+                                                                                                                                                                                                                                
+                                                                                Note:
+                                                                                This package is valid only in Mumbai.
+                                                                                Overnight fasting NOT required. ","61 Investigations covered across 9 lifestyle diseases.
+                                                                                - Overnight fasting NOT required
+                                                                                - Package valid only in Mumbai",5,full,active,473,473,2016-12-14 10:16:49,2018-04-05 20:34:53
+44,wecare,q,q,50,full,inactive,1,1,2018-01-16 14:18:07,2018-04-05 20:30:12
+57,mecure,qwerty,wrty,10,full,active,4,3,2018-01-23 13:22:23,2018-04-06 07:04:34

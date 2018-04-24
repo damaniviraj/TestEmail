@@ -1,0 +1,238 @@
+<style>
+body {font-family:Arial,sans-serif; font-size:11px;}
+table td, table th {  font-family:Arial,sans-serif; padding:3px; font-size:11px; border:1px solid #000 }
+table .num { text-align:right}
+  </style>
+<table style="width:100%">
+  <tr>
+    <td style="text-align:center;font-size:12px; font-weight:bold">Cash Tally for -  ${from_date}' - '${to_date} Authenticated</td>
+  </tr>
+</table>
+<br/><br/>
+
+
+  <table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tr>
+      <td colspan="12" style="text-align:center; font-size:12px; font-weight:bold"><label>Viraj</label></td>
+    </tr>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Client Name</th>
+      <th>Mobile</th>
+      <th>Trans type</th>
+      <th>Trans detail</th>
+      <th>Bank</th>
+      <th>Account number</th>
+      <th>Teller</th>
+      <th class="num">Amount</th>
+      <th>Agent</th>
+      <th>MA Number</th>
+    </tr>
+  
+   
+    <tr>
+      <td>1</td>
+      <td>asdfddsx</td>
+      <td>njbkln</td>
+      <td>?php echo $l['mobile']; ?></td>
+      <td>?php echo ucwords($l['transaction_type']); ?></td>
+      <td>?php echo $l['transaction_id']; ?></td>
+      <td>?php echo $l['bank']; ?></td>
+      <td>?php echo $l['account_number']; ?></td>
+      <td>?php echo $l['details']; ?></td>
+      <td class="num">?php echo number_format($l['amount'],2); ?></td>
+      <td>?php echo $l['agent_name']; ?></td>
+      <td>?php echo $l['coupon_code']; ?></td>
+    </tr>
+  
+
+    <tr>
+        <td colspan="12" style="text-align:right"><strong>Amount:</strong> ?php echo number_format($total); ?></td>
+    </tr>
+</table>
+<br/><br/>
+
+<table style="width:100%;page-break-before: always" border="0"  cellspacing="0" cellpadding="0" >
+  <tr><td style="text-align:center; font-weight:bold" colspan="4">Summary</td></tr>
+  <tr>
+    <th>User</th>
+    <th>Cash</th>
+    <th>Card</th>
+    <th>Total</td>
+  </tr>
+  ?php foreach($records as $s){ 
+    $totalCash = $totalCash +  $s['cash'];
+    $totalCard  = $totalCard +  $s['card'];
+
+    
+    ?>
+    <tr>
+    <td>?php echo $s['name']; ?></td>
+    <td>?php echo number_format($s['cash'],2); ?></td>
+    <td>?php echo number_format($s['card'],2); ?></td>
+    <td>?php echo number_format($s['total'],2); ?></td>
+  </tr>
+  ?php } ?>
+  <tr>
+    <td>Total</td>
+    <td>?php echo number_format($totalCash,2); ?></td>
+    <td>?php echo number_format($totalCard,2); ?></td>
+    <td>?php
+    $totalCollection = $totalCash+$totalCard;
+    echo number_format($totalCollection,2); ?></td>
+  </tr>
+</table>
+
+<table style="width:100%;page-break-before: always">
+  <tr>
+    <td style="text-align:center;font-size:12px; font-weight:bold">Cash Tally for - ?php echo $from_date.' - '.$to_date; ?> Not Authenticated But Payment Received</td>
+  </tr>
+</table>
+<br/><br/>
+
+?php 
+  foreach($notAuthenticated as $key=>$r){ 
+?>
+  <table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tr>
+      <td colspan="12" style="text-align:center; font-size:12px; font-weight:bold"><label>?php echo $r['name']; ?></label></td>
+    </tr>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Client Name</th>
+      <th>Mobile</th>
+      <th>Trans type</th>
+      <th>Trans detail</th>
+      <th>Bank</th>
+      <th>Account number</th>
+      <th>Teller</th>
+      <th class="num">Amount</th>
+      <th> Agent</th>
+      <th>MA Number</th>
+    </tr>
+  
+   
+    <tr>
+      <td>?php echo $i; ?></td>
+      <td>?php echo date('d-m-Y H:i:s',$l['added_on']); ?></td>
+      <td>?php echo ucwords($l['first_name'].' '.$l['last_name']); ?></td>
+      <td>?php echo $l['mobile']; ?></td>
+      <td>?php echo ucwords($l['transaction_type']); ?></td>
+      <td>?php echo $l['transaction_id']; ?></td>
+      <td>?php echo $l['bank']; ?></td>
+      <td>?php echo $l['account_number']; ?></td>
+      <td>?php echo $l['details']; ?></td>
+      <td class="num">?php echo number_format($l['amount'],2); ?></td>
+      <td>?php echo $l['agent_name']; ?></td>
+      <td>?php echo $l['coupon_code']; ?></td>
+    </tr>
+  
+
+    <tr>
+        <td colspan="12" style="text-align:right"><strong>Amount:</strong> <?php echo number_format($total); ?></td>
+    </tr>
+</table>
+<br/><br/>
+
+<table style="width:100%;page-break-before: always" border="0"  cellspacing="0" cellpadding="0" >
+  <tr><td style="text-align:center; font-weight:bold" colspan="4">Summary</td></tr>
+  <tr>
+    <th>User</th>
+    <th>Cash</th>
+    <th>Card</th>
+    <th>Total</td>
+  </tr>
+  
+    <tr>
+    <td>?php echo $s['name']; ?></td>
+    <td>?php echo number_format($s['cash'],2); ?></td>
+    <td>?php echo number_format($s['card'],2); ?></td>
+    <td>?php echo number_format($s['total'],2); ?></td>
+  </tr>
+  ?php } ?>
+  <tr>
+    <td>Total</td>
+    <td>?php echo number_format($totalCash,2); ?></td>
+    <td>?php echo number_format($totalCard,2); ?></td>
+    <td>?php
+    $totalCollection = $totalCash+$totalCard;
+    echo number_format($totalCollection,2); ?></td>
+  </tr>
+</table>
+
+<table style="width:100%;page-break-before: always">
+  <tr>
+    <td style="text-align:center;font-size:12px; font-weight:bold">Cash Tally for - ?php echo $from_date.' - '.$to_date; ?> Payment Not received</td>
+  </tr>
+</table>
+<br/><br/>
+
+
+  <table cellspacing="0" cellpadding="0" style="width:100%;">
+    <tr>
+      <td colspan="12" style="text-align:center; font-size:12px; font-weight:bold"><label><?php echo $r['name']; ?></label></td>
+    </tr>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Client Name</th>
+      <th>Mobile</th>
+      <th>Trans type</th>
+      <th>Trans detail</th>
+      <th>Bank</th>
+      <th>Account number</th>
+      <th>Teller</th>
+      <th class="num">Amount</th>
+      <th> Agent</th>
+      <th>MA Number</th>
+    </tr>
+  
+   
+    <tr>
+      <td>?php echo $i; ?></td>
+      <td>?php echo date('d-m-Y H:i:s',$l['added_on']); ?></td>
+      <td>?php echo ucwords($l['first_name'].' '.$l['last_name']); ?></td>
+      <td>?php echo $l['mobile']; ?></td>
+      <td>?php echo ucwords($l['transaction_type']); ?></td>
+      <td>?php echo $l['transaction_id']; ?></td>
+      <td>?php echo $l['bank']; ?></td>
+      <td>?php echo $l['account_number']; ?></td>
+      <td>?php echo $l['details']; ?></td>
+      <td class="num">?php echo number_format($l['amount'],2); ?></td>
+      <td>?php echo $l['agent_name']; ?></td>
+      <td>?php echo $l['coupon_code']; ?></td>
+    </tr>
+  
+
+    <tr>
+        <td colspan="12" style="text-align:right"><strong>Amount:</strong> <?php echo number_format($total); ?></td>
+    </tr>
+</table>
+<br/><br/>
+
+<table style="width:100%;page-break-before: always" border="0"  cellspacing="0" cellpadding="0" >
+  <tr><td style="text-align:center; font-weight:bold" colspan="4">Summary</td></tr>
+  <tr>
+    <th>User</th>
+    <th>Cash</th>
+    <th>Card</th>
+    <th>Total</td>
+  </tr>
+  
+    <tr>
+    <td>?php echo $s['name']; ?></td>
+    <td>?php echo number_format($s['cash'],2); ?></td>
+    <td>?php echo number_format($s['card'],2); ?></td>
+    <td>?php echo number_format($s['total'],2); ?></td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td>?php echo number_format($totalCash,2); ?></td>
+    <td>?php echo number_format($totalCard,2); ?></td>
+    <td>?php
+    $totalCollection = $totalCash+$totalCard;
+    echo number_format($totalCollection,2); ?></td>
+  </tr>
+</table>
