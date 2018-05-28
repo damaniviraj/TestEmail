@@ -7,6 +7,7 @@ var csv = require("fast-csv");
 var pdf = require('handlebars-pdf');
 var multer = require('multer');
 var path = require('path');
+var json2csv = require('json2csv');
 const screenshot = require('screenshot-desktop')
 const os = require('os');
 
@@ -16,7 +17,7 @@ const os = require('os');
 router.get('/',
 
   function (req, res, next) {
-    
+
     var helper = require('sendgrid').mail;
     var fromEmail = new helper.Email('test@example.com');
     var toEmail = new helper.Email('demo@techcetra.com');
@@ -76,28 +77,66 @@ router.get('/createpdf',
 
 router.get('/machineid',
   function (req, res) {
-    var stream = fs.createReadStream("public/images/package.csv");
-    parser = fastCsv();
+    // var stream = fs.createReadStream("public/images/package.csv");
+    // parser = fastCsv();
 
-    fileStream
-    .on("readable", function () {
-        var data;
-        while ((data = fileStream.read()) !== null) {
-            parser.write(data);
-        }
-    })
-    .on("end", function () {
-        parser.end();
-    });
-    // var csvStream = csv
-    // .parse(stream)
-    //   .on("data", function (data) {
-    //     console.log(data);
-    //     res.json(data) 
+    // fileStream
+    // .on("readable", function () {
+    //     var data;
+    //     while ((data = fileStream.read()) !== null) {
+    //         parser.write(data);
+    //     }
+    // })
+    // .on("end", function () {
+    //     parser.end();
+    // });
+
+    // let newArray = [];
+
+    // var stream = fs.createReadStream("public/images/random.csv");
+
+    // csv
+    //   .fromStream(stream, { headers: true })
+    //   .on("data", async function (data) {
+    //     await newArray.push(data.mobile)
+    //     console.log(data.mobile);
     //   })
     //   .on("end", function () {
     //     console.log("done");
     //   });
+
+    //   console.log(newArray)
+    var stream = fs.createReadStream("public/images/random.csv");
+    var newArray = [];
+csv
+ .fromStream(stream, {headers : true})
+ .on("data", function(data){
+  newArray.push(data.mobile)
+     console.log(data);
+ })
+ .on("end", function(){
+   console.log(newArray)
+     console.log("done");
+ });
+ 
+    // csv
+    //   .fromPath("public/images/random.csv")
+    //   .on("data", function (data) {
+    //     console.log(data);
+    //   })
+    //   .on("end", function () {
+    //     console.log("done");
+    //   });
+    // var csvStream = csv
+    //   .parse(stream)
+    //   .on("data", function (data) {
+    //     console.log(data);
+    //     res.json(data)
+    //   })
+    //   .on("end", function () {
+    //     console.log("done");
+    //   });
+
 
 
     // res.render('test', { title: 'Express' });
@@ -106,13 +145,13 @@ router.get('/machineid',
   })
 
 
-  router.get('/screenshot',
+router.get('/screenshot',
   async function (req, res) {
 
     let rand = Math.random();
 
-    let vari = await screenshot({ filename: 'public/images/'+rand+'.png' });
-    
+    let vari = await screenshot({ filename: 'public/images/' + rand + '.png' });
+
 
     // screenshot({ filename: 'public/images/'+rand+'.png' });
 
@@ -120,43 +159,96 @@ router.get('/machineid',
       if (err) throw err;
       res.contentType("image/png");
       res.send(imageData);
-  });
+    });
   })
 
-  router.get('/multerImg',
+router.get('/multerImg',
   async function (req, res) {
 
     res.render('image')
   })
 
-  var storage = multer.diskStorage({
-    destination: function(req, file, callback) {
-      callback(null, 'public/images/')
-    },
-    filename: function(req, file, callback) {
-      callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  router.get('/csvwrite',
+  async function (req, res) {
+
+    var json = [
+      {
+        "car": "Audi",
+        "price": 40000,
+        "color": "blue"
+      }, {
+        "car": "BMW",
+        "price": 35000,
+        "color": "black"
+      }, {
+        "car": "Porsche",
+        "price": 60000,
+        "color": "green"
+      }
+    ];
+
+    
+    json2csv({data: json, fields: ['car', 'price', 'color']}, function(err, csv) {
+      if (err) console.log(err);
+      fs.writeFile('file.csv', csv, function(err) {
+        if (err) throw err;
+        console.log('file saved');
+      });
+    });
+
+  })
+  router.get('/charts',
+  async function (req, res) {
+    var day = 1000*60*60*24;
+    date1 = new Date('2013-07-30');
+    date2 = new Date("2013-09-04");
+
+
+    var diff = (date2.getTime()- date1.getTime())/day;
+    for(var i=0;i<=diff; i++)
+    {
+       var xx = date1.getTime()+day*i;
+       var yy = new Date(xx);
+
+       console.log(yy.getFullYear()+"-"+(yy.getMonth()+1)+"-"+yy.getDate());
     }
+
+    res.render('charts')
   })
 
-  router.post('/multerImg',
+  router.get('/bar-chart',
+  async function (req, res) {
+
+    res.render('barchart')
+  })
+var storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, 'public/images/')
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+router.post('/multerImg',
   async function (req, res) {
     var upload = multer({
       storage: storage,
-      fileFilter: function(req, file, callback) {
+      fileFilter: function (req, file, callback) {
         var ext = path.extname(file.originalname)
         if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
           return callback(res.end('Only images are allowed'), null)
         }
         callback(null, true)
       }
-    }).array('userFile',2);
-    upload(req, res, function(err) {
+    }).array('userFile', 2);
+    upload(req, res, function (err) {
       res.end('File is uploaded')
     })
-  
+
   })
 
- 
+
 
 
 module.exports = router;
