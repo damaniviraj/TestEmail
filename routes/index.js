@@ -164,7 +164,7 @@ router.get('/screenshot',
 
 router.get('/multerImg',
   async function (req, res) {
-
+    console.log("testing image route")
     res.render('image')
   })
 
