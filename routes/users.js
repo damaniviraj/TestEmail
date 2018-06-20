@@ -19,13 +19,7 @@ var router = express.Router();
 
 
       async.series([
-        // function doSomething(callback) {
-        //   productImgArray[i].mv('./public/images/' + tempNameArray1, function (err) {
-        //     if (err)
-        //       return res.status(500).send(err);
-        //   });
-        //   callback();
-        // },
+   
         function uploadone(callback) {
           //upload locally uploaded image on amazon server
 
